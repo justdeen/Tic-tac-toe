@@ -38,9 +38,13 @@ span{
     font-family: 'Nunito';
 }
 
-.buttons button:nth-of-type(2), .buttons button:nth-of-type(3){
+.buttons button:nth-of-type(2){
     padding: 7px 12.5px;
 }
+
+.buttons button:nth-of-type(3){
+    padding: 7px 12px;
+ }
 
 /* Styling of tiles */
 .inner{
