@@ -1,0 +1,73 @@
+/* Centering all the contents in the middle of the page */
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    align-items: center;
+}
+
+/* Onscreen instructions */
+span{
+    font-size: 10px;
+    margin-bottom: 7.5px;
+    letter-spacing: 0.5px;
+    font-family: 'Nunito';
+}
+
+/* Container nesting all the tiles */
+#outer{
+    display: flex;
+    flex-wrap: wrap;
+    width: 310px;
+    height: 310px;
+}
+
+/* Styling of buttons */
+.buttons{
+    margin-bottom: 10px;
+}
+
+.buttons button{
+    background-color: rgb(255, 130, 151);
+    color: white;
+    border-radius: 7.5px;
+    border: none;
+    padding: 7px 9px;
+    margin: 0px 3px;
+    font-family: 'Nunito';
+}
+
+.buttons button:nth-of-type(2), button:nth-of-type(3){
+    padding: 7px 10px;
+}
+
+/* Styling of tiles */
+.inner{
+    height: 100px;
+    width: 100px;
+    border-bottom: 5px solid rgb(255, 104, 129);
+    border-right: 5px solid rgb(255, 104, 129);
+    background-color: rgb(255, 162, 178);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 55px;
+    color: white;
+    font-family: 'Nunito';
+}
+
+.inner:nth-of-type(3), .inner:nth-of-type(6), .inner:nth-of-type(9){
+    border-right: none;
+} 
+
+.inner:nth-of-type(7), .inner:nth-of-type(8), .inner:nth-of-type(9){
+    border-bottom: none;
+} 
+
+/* Styling of dynamic text for displaying the winner */
+#winner{
+    margin-top: 10px;
+    font-family: 'Nunito';
+}
