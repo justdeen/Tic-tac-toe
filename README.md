@@ -1,5 +1,5 @@
 ## Overview
-A classic Tic-Tac-Toe game built with JavaScript, HTML, and CSS. Play as X or O against your friend or challenge yourself!
+A classic Tic-Tac-Toe game built with vanilla JS, HTML, and CSS. Play as X or O against your friend or challenge yourself!
 
 ## Features
 - Simple and intuitive gameplay
