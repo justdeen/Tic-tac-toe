@@ -6,6 +6,7 @@ const restart = document.getElementById('restart')
 const winner = document.getElementById('winner')
 const intro = document.getElementById('intro')
 let move = 0
+let check = ''
 
 //Onscreen instructions
 intro.innerHTML = 'Select "X" or "O" to begin'
@@ -32,6 +33,7 @@ restart.addEventListener('click', () =>{
     innerDiv.forEach(elem =>{
         elem.innerHTML = ''
     })
+    check = ''
     winner.innerHTML = ''
     intro.innerHTML = 'Select "X" or "O" to begin'
     x.style.display = 'inline-block'
@@ -41,71 +43,51 @@ restart.addEventListener('click', () =>{
 //Eventlistener for each tile
 innerDiv.forEach(elem => {
     elem.addEventListener('click', () => {
-        if(move === 'X' && !elem.innerHTML){
+        if(move === 'X' && elem.innerHTML === ''){
+            elem.style.color = 'white'
             elem.innerHTML = 'X'
             move = 'O'
             intro.innerHTML = ''
-        }else if(move === 'O' && !elem.innerHTML){
+        }else if(move === 'O' && elem.innerHTML === ''){
+            elem.style.color = 'white'
             elem.innerHTML = 'O'
             move = 'X'
             intro.innerHTML = ''
         }
 
-        //if and else if commands for each possible winning scenario
-        if(innerDiv[0].innerHTML === 'X' && innerDiv[1].innerHTML === 'X' && innerDiv[2].innerHTML === 'X'){
-            winner.innerHTML = "Player 'X' won!"
-            move = 0
-        }else if(innerDiv[0].innerHTML === 'O' && innerDiv[1].innerHTML === 'O' && innerDiv[2].innerHTML === 'O'){
-            winner.innerHTML = "Player 'O' won!"
-            move = 0
-        }else if(innerDiv[3].innerHTML === 'X' && innerDiv[4].innerHTML === 'X' && innerDiv[5].innerHTML === 'X'){
-            winner.innerHTML = "Player 'X' won!"
-            move = 0
-        }else if( innerDiv[3].innerHTML === 'O' && innerDiv[4].innerHTML === 'O' && innerDiv[5].innerHTML === 'O' ){
-            winner.innerHTML = "Player 'O' won!"
-            move = 0
-        }else if(innerDiv[6].innerHTML === 'X' && innerDiv[7].innerHTML === 'X' && innerDiv[8].innerHTML === 'X' ){
-            winner.innerHTML = "Player 'X' won!"
-            move = 0
-        }else if(innerDiv[6].innerHTML === 'O' && innerDiv[7].innerHTML === 'O' && innerDiv[8].innerHTML === 'O' ){
-            winner.innerHTML = "Player 'O' won!"
-            move = 0
-        }else if(innerDiv[0].innerHTML === 'X' && innerDiv[4].innerHTML === 'X' && innerDiv[8].innerHTML === 'X' ){
-            winner.innerHTML = "Player 'X' won!"
-            move = 0
-        }else if(innerDiv[0].innerHTML === 'O' && innerDiv[4].innerHTML === 'O' && innerDiv[8].innerHTML === 'O' ){
-            winner.innerHTML = "Player 'O' won!"
-            move = 0
-        }else if(innerDiv[2].innerHTML === 'X' && innerDiv[4].innerHTML === 'X' && innerDiv[6].innerHTML === 'X' ){
-            winner.innerHTML = "Player 'X' won!"
-            move = 0
-        }else if(innerDiv[2].innerHTML === 'O' && innerDiv[4].innerHTML === 'O' && innerDiv[6].innerHTML === 'O' ){
-            winner.innerHTML = "Player 'O' won!"
-            move = 0
-        }else if(innerDiv[0].innerHTML === 'X' && innerDiv[3].innerHTML === 'X' && innerDiv[6].innerHTML === 'X' ){
-            winner.innerHTML = "Player 'X' won!"
-            move = 0
-        }else if(innerDiv[0].innerHTML === 'O' && innerDiv[3].innerHTML === 'O' && innerDiv[6].innerHTML === 'O' ){
-            winner.innerHTML = "Player 'O' won!"
-            move = 0
-        }else if(innerDiv[1].innerHTML === 'X' && innerDiv[4].innerHTML === 'X' && innerDiv[7].innerHTML === 'X' ){
-            winner.innerHTML = "Player 'X' won!"
-            move = 0
-        }else if(innerDiv[1].innerHTML === 'O' && innerDiv[4].innerHTML === 'O' && innerDiv[7].innerHTML === 'O' ){
-            winner.innerHTML = "Player 'O' won!"
-            move = 0
-        }else if(innerDiv[2].innerHTML === 'X' && innerDiv[5].innerHTML === 'X' && innerDiv[8].innerHTML === 'X'){
-            winner.innerHTML = "Player 'X' won!"
-            move = 0
-        }else if(innerDiv[2].innerHTML === 'O' && innerDiv[5].innerHTML === 'O' && innerDiv[8].innerHTML === 'O' ){
-            winner.innerHTML = "Player 'O' won!"
-            move = 0
-        }
-        else if(innerDiv[0].innerHTML && innerDiv[1].innerHTML && innerDiv[2].innerHTML && innerDiv[3].innerHTML &&
-                innerDiv[4].innerHTML && innerDiv[5].innerHTML && innerDiv[6].innerHTML && innerDiv[7].innerHTML &&
-                innerDiv[8].innerHTML){
-            winner.innerHTML = "It's a draw!"
-            move = 0
+        let combo = [
+            [0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]
+        ]
+        for(i=0; i<8; i++){
+            let v0 = innerDiv[combo[i][0]].innerHTML
+            let v1 = innerDiv[combo[i][1]].innerHTML
+            let v2 = innerDiv[combo[i][2]].innerHTML
+
+            if(v0 === v1 && v1 === v2 && v0 === 'X'){
+                winner.innerHTML = "Player 'X' won!"
+                move = 0
+                check = ''
+                break
             }
+
+            else if(v0 === v1 && v1 === v2 && v0 === 'O'){
+                winner.innerHTML = "Player 'O' won!"
+                move = 0
+                check = ''
+                break
+            }
+        }
+
+        for(i=0; i<8; i++){
+            if(innerDiv[i].innerHTML==='X' || innerDiv[i].innerHTML==='O'){
+                check += innerDiv[i].innerHTML
+                console.log(check.length)
+                if(check.length === 9){
+                    winner.innerHTML = "It's a draw!"
+                    move = 0
+                }
+                break
+            }
+        }
     })
 });
