@@ -21,7 +21,7 @@ A classic Tic-Tac-Toe game built with vanilla JS, HTML, and CSS. Play as X or O 
 
 ## 📃Code Structure
 - index.html: Game entry point
-- tictac.css: CSS styles
+- tictac.css: CSS styling
 - tictac.js: Game logic and functionality
 
 ## 🥂Contributing
