@@ -1,3 +1,5 @@
+![Notes_241026_122405_58d](https://github.com/user-attachments/assets/70abb3c7-8750-4825-9c43-e027bc5c9d02)
+
 ## 💫Overview
 A classic Tic-Tac-Toe game built with vanilla JS, HTML, and CSS. Play as X or O against your friend or challenge yourself!
 
